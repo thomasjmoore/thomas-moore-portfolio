@@ -55,8 +55,7 @@ var ILLO_DIMS = [
 ];
 
 var ILLO_GAP = 6;
-var ILLO_TARGET_HEIGHT = 280; // target row height; taller = fewer images per row
-var ILLO_MAX_HEIGHT    = 360; // cap: rows that would stretch taller than this left-align instead
+var ILLO_MAX_HEIGHT = 360; // cap: rows that would stretch taller than this left-align instead
 
 function layoutIlloGrid() {
   var grid = document.querySelector('.illo-grid');
@@ -70,6 +69,9 @@ function layoutIlloGrid() {
     - parseFloat(cs.paddingLeft)
     - parseFloat(cs.paddingRight);
   if (containerWidth <= 0) return;
+
+  // Shorter target height on mobile so at least 2 images fit per row
+  var ILLO_TARGET_HEIGHT = containerWidth < 500 ? 160 : 280;
 
   var aspects = ILLO_DIMS.map(function (d) { return d[0] / d[1]; });
 

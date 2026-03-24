@@ -471,7 +471,7 @@ footer {
 @media (max-width: 768px) {
 
   #home {
-    padding-top: 68px;
+    padding-top: 110px;
   }
 
   .nav-inner {
@@ -507,7 +507,45 @@ footer {
 
   .skills-columns {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 0;
+  }
+
+  #skills {
+    background: none;
+  }
+
+  .skills-col:first-child {
+    background: #c5dee2;
+    padding: 28px 20px;
+  }
+
+  .skills-col:last-child {
+    background: #eaf8f9;
+    padding: 28px 20px;
+  }
+
+  .skills-col:first-child ul li,
+  #skills .skills-col:first-child h2 {
+    text-align: left;
+    padding-right: 0;
+  }
+
+  .skills-col:last-child ul li,
+  #skills .skills-col:last-child h2 {
+    padding-left: 0;
+  }
+
+  .bio-layout {
+    flex-direction: column;
+  }
+
+  .bio-photo-wrap {
+    flex: none;
+    width: 100%;
+  }
+
+  .bio-text {
+    padding: 28px 20px;
   }
 
 }
