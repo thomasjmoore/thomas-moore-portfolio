@@ -1,0 +1,519 @@
+/* ============================================================
+   RESET & BASE
+============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #cce0ea;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2a2a2a;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+}
+
+.nav-brand {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-brand:hover {
+  color: #cce0ea;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: #bbb;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   HOME — compact tagline strip
+============================================================ */
+
+#home {
+  /* top offset = nav (48px) */
+  padding-top: 58px;
+  padding-bottom: 10px;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+.home-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.home-name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #333;
+  margin-bottom: -6px;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+/* ============================================================
+   SECTIONS — shared white content panels
+============================================================ */
+
+section {
+  padding: 0;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 40px 48px;
+}
+
+/* Reel section: white goes full width, content stays centered */
+#reel {
+  background-color: #fff;
+  margin-bottom: 32px;
+  padding-bottom: 40px;
+}
+
+#reel .section-inner {
+  background-color: transparent;
+}
+
+#bio {
+  margin-bottom: 0;
+  background-color: #a8c4d0;
+  padding: 48px 0;
+}
+
+h2 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #333;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Breakdown is not a section heading — keep it light and smaller */
+.breakdown h2 {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+p {
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+  color: #555;
+  line-height: 1.65;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   REEL — Video + Breakdown + Thumbnail grid
+============================================================ */
+
+/* 16:9 responsive video wrapper */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 32px;
+  background: #000;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Breakdown: serif centered title, 3-column, delicate font */
+.breakdown {
+  margin-bottom: 32px;
+}
+
+/* .breakdown h2 inherits from global h2 */
+
+.breakdown-grid {
+  columns: 3;
+  column-gap: 40px;
+}
+
+.breakdown-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.breakdown-item h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.breakdown-item ul {
+  list-style: disc;
+  padding-left: 16px;
+}
+
+.breakdown-item ul li {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.55;
+  margin-bottom: 3px;
+  font-weight: 300;
+}
+
+.shot-nums {
+  font-weight: 300;
+  color: #bbb;
+}
+
+/* Reel thumbnail grid — constrained width, 4 columns, tight */
+.reel-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+.reel-grid a {
+  display: block;
+  overflow: hidden;
+  background: #1a1a1a;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+}
+
+.reel-grid a:hover img {
+  opacity: 0.85;
+  transform: scale(1.04);
+}
+
+.reel-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ============================================================
+   ILLUSTRATIONS — on blue background, 2 large columns
+============================================================ */
+
+#illustrations {
+  padding: 16px 0 40px;
+}
+
+.illo-header {
+  max-width: 1100px;
+  margin: 0 auto 16px;
+  padding: 0 16px;
+}
+
+.illo-header h2 {
+  color: #333;
+}
+
+.illo-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.illo-grid a {
+  display: block;
+  overflow: hidden;
+  background: #b8d0da;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.illo-grid a:hover img {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.illo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ============================================================
+   BIO
+============================================================ */
+
+#bio .section-inner {
+  max-width: 860px;
+  background-color: transparent;
+  padding: 0; /* image goes flush; text handles its own padding */
+}
+
+.bio-layout {
+  display: flex;
+  align-items: center;
+}
+
+.bio-photo-wrap {
+  flex: 0 0 42%;
+}
+
+.bio-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.bio-text {
+  padding: 40px 48px;
+  flex: 1;
+}
+
+.bio-text h2 {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+#bio p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SKILLS
+============================================================ */
+
+#skills {
+  background: linear-gradient(to right, #c5dee2 50%, #eaf8f9 50%);
+}
+
+#skills .section-inner {
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+.skills-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.skills-col ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.skills-col ul li {
+  padding: 2px 0;
+  color: #555;
+  font-size: 0.88rem;
+  list-style: none;
+  line-height: 1.4;
+}
+
+.skills-col:first-child ul li {
+  text-align: right;
+  padding-right: 32px;
+}
+
+#skills .skills-col:first-child h2 {
+  text-align: right;
+  padding-right: 32px;
+}
+
+.skills-col:last-child ul li {
+  text-align: left;
+  padding-left: 32px;
+}
+
+#skills .skills-col:last-child h2 {
+  text-align: left;
+  padding-left: 32px;
+}
+
+/* ============================================================
+   CONTACT — dark section, anchors the page
+============================================================ */
+
+#contact {
+  background-color: #2a2a2a;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+#contact h2 {
+  color: #999;
+  margin-bottom: 16px;
+}
+
+#contact p {
+  color: #bbb;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+#contact a {
+  color: #bbb;
+  transition: color 0.2s;
+}
+
+#contact a:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer {
+  background-color: #1a1a1a;
+  text-align: center;
+  padding: 16px;
+  font-size: 0.72rem;
+  color: #555;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (max 768px)
+============================================================ */
+
+@media (max-width: 768px) {
+
+  #home {
+    padding-top: 68px;
+  }
+
+  .nav-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 16px;
+    gap: 6px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+  }
+
+  .section-inner {
+    padding: 28px 20px;
+  }
+
+  .breakdown-grid {
+    columns: 1;
+  }
+
+  .breakdown h2 {
+    font-size: 1.2rem;
+  }
+
+  .reel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* illo-grid adapts automatically via JS justified layout */
+
+  .skills-columns {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .reel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
