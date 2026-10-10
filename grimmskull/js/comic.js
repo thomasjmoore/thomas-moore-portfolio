@@ -151,7 +151,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var applyMode = function (mode, updateHash) {
       currentMode = mode;
-      document.documentElement.classList.toggle("chroma-mode-bw", mode === "bw");
+      var isBw = mode === "bw";
+      document.documentElement.classList.toggle("chroma-mode-bw", isBw);
+      // also toggled directly on .mode-switch itself, not just the <html>
+      // ancestor - iPadOS has a real bug where a transform several levels
+      // below a class change on a FAR ancestor doesn't get recomputed on
+      // a live toggle (fine on fresh load, just never animates after a
+      // click); toggling the near parent too works around it.
+      switchEl.classList.toggle("mode-bw", isBw);
+      switchEl.classList.toggle("mode-color", !isBw);
+      void switchEl.offsetWidth; // nudge a layout read in, just in case
       tabs.forEach(function (tab) {
         tab.setAttribute("aria-selected", String(tab.dataset.mode === mode));
       });
